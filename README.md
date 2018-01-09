@@ -122,6 +122,15 @@ int charactersInName = myName.length(); // 7
 char thirdCharacterInName = myName.charAt(2); // 'c'
 ```
 
+#### Comparisons: `==` vs `.equals()`
+Sometimes we want to check whether two variables have the same value. For primitives, we use `==`; for objects, we use `.equals()`.
+```
+int a, b;
+boolean aEqualsB = a == b;
+String c, d;
+boolean cEqualsD = a.equals(d);
+```
+
 ### `final`
 Variable declarations can have additional keywords attached to them. `final` is one such keyword, which means that the variable can only be assigned once. This is useful for defining constants, and making sure their values never change.
 ```
