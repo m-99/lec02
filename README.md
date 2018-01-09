@@ -1,4 +1,4 @@
-# 6.178 Lecture #2 - Command Line, Git, Methods, Switch, Enums, Strings, and Arrays
+# 6.178 Lecture #2 - Variables, Methods, Strings, Enums, and Arrays
 
 ## More Logistics
 * [Instructions on Cloning & Submitting Psets](https://github.mit.edu/6178-2017/pset-instructions)
@@ -9,183 +9,27 @@
 * If you didn't get a repo for pset #1, please let us know by filling out [this Google form](https://goo.gl/forms/TDHtVW5f3ncpWImE2).
 * Please sign up for the [Piazza](https://piazza.com/class/ixbeg17oz79vm) to get updated on pset revisions and other things.
 
-## Command Line
-Command-line is just an interface to your computer just like Finder or Windows Explorer. The only difference is that it is text based. The command-line keeps track of what directory/folder you are currently in and you can run commands that can take zero or more arguments.
+### Clone this Repo
 
-For __Mac and Linux__ users, we use __Terminal__ as our command-line. For __Windows__ users, we use __Git Bash__.
-
-In the future, when we say "run this command", we mean open up your command-line interface (either Terminal or Git Bash), type that command in the appropriate directory, and hit _Enter_.
-
-<img src="./images/terminal1.jpg" style="margin-right: auto; margin-left: auto; display: block; width: 200px;">
-
-In this picture you can see that the text in the red box tells you where you currently are or what directory you are in. `~` is a shortcut to your home directory. For example for Mac Users, this is usually `/Users/<username>`.
-
-Here are some useful commands:
-
-* `cd` - "change directory"
-  * Changes the current directory. In you’re in a directory that has a subdirectory called hello, then cd hello moves into that subdirectory. 
-  * `cd ..` moves to the parent directory (the '..' represents the parent directory)
-  * `cd .` moves to the current directory (the '.' represents the current directory)
-* `pwd` - "print working directory"
-  * Prints out the current directory, if you’re not sure where you are.
-  * Helpful to see where you current are in your file system.
-* `ls` - "list"
-  * Lists the files in the current directory
-  * `ls -l` - "long" listing for more information on the files
-  * `ls -a` - list all files (including hidden files)
-* `mkdir` - "make directory"
-  * Creates a new directory in the current directory.
-  * `mkdir 6.178` will create a directory called 6.178 in the current directory you're in
-* _up arrow_
-  * Puts the command you previously ran into your command-line.
-  * You can navigate through your history of commands with the _up arrow_ and _down arrow_.
-
-## Git
-As we said in the previous lecture, __Git__ is a version control system which means it can __track file changes__. _Why should you care?_ Many software engineers use Git to collaborate on projects. Software engineers use Git to work on code on their own local computer while keeping a working/live version of the code on the remote repo. Git is awesome because if you somehow make some mistake, Git can help you recover your files.
-
-Before we get into the details, there are many resources online to learn more about Git and master it. 6.031 (previously known as 6.005) has great documentation about Git workflow and what Git is [here](http://web.mit.edu/6.005/www/fa16/getting-started/#git). You can also checkout [Gitstream](https://gitstream.csail.mit.edu/), a webapp that helps you learn more about Git made by MIT CSAIL.
-
-### Cloning a Repo
-
-A repository or __repo__ is the folder that stores all these files and keeps track of any file changes. For example, this lecture is a repo. You can __clone__ this repo, to get its contents on your own computer. Cloning is basically taking the contents of this remote (not on your computer) repo and copying/pasting them into a local directory on your own computer. To do this, run this line in command-line:
-
-`git clone URI-of-remote-repo`
-
-* To clone this repo, run: `git clone git@github.mit.edu:6178-2017/lec2.git`
+* Open Terminal or Git Bash.
+* Go into your 6.178 directory: for example, `cd ~/Documents/6.178`
+* Run: `git clone git@github.mit.edu:6178-2018/lec2.git`
   * If that didn't work, try `git clone https://github.mit.edu/6178-2017/lec2.git`.
   * You should not need to put in your username or password if you setup your SSH keys correctly.
-  * If you did not set up your SSH keys, refer to [Lecture 1](https://github.mit.edu/6178-2017/lec1#ssh-keys).
+  * If you did not set up your SSH keys, refer to [Lecture 1](https://github.mit.edu/6178-2018/lec1#github).
+* `cd lec2`
 
-### Important Git Concepts
+Unlike Lecture 1, you will not need to create your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check.
 
-Here are some important Git concepts to know before we delve into why we do this:
-* __commit__
-  * A commit is a snapshot of the files in a repo at a given time. Usually you can identify a commit with some hash.
-* __add__
-  * Before changes to files can be committed, the files must be added or staged.
-  * This allows you to pick and choose which changed files should be committed to the remote repo.
-* __push__
-  * Pushing sends your local commits to the remote repository.
-  * You must add, commit, and then push changes in order send these changes to the remote repository. If not, no one else will be able to see your local changes.
-* __pull__
-  *  Pulling retrieves commits made to the remote repository that are not in your local repository and writes them into your local repository.
+### Install Constellation
 
-### Git Workflow
+* Go to [https://constellation.csail.mit.edu/](https://constellation.csail.mit.edu/)
+* Click "Install the Constellation plug-in". Open up Eclipse and follow the instructions.
+* Once Eclipse has restarted, you should see a "Collaborate" button along the bottom.
 
-Conceptually, we use Git to work on things on our local computer to later push them to a remote repo (for example on Github) so that other people can see our code and collaborate with us! There are a couple of Git commands we can run in the command-line that helps us get our changes from our local repo on our computer to the remote repo hosted on Github.
+TODO Blurb about how to use, whether we require partners, etc
 
-Here is the typical __Git workflow__ or process of which you add your changes, commit your changes, and push them to the remote repository.
-
-#### 0. Pull before making changes.
-Sometimes you will make changes in your local repository and they will conflict with changes that have happened in the remote repo. To avoid these conflicts, __always pull before you start making changes to code in a repo.__ This will likely not happen in 6.178 because you will never have to collaborate with someone on the same repo.
-
-To pull potential commits from the remote repo, run the command in the directory of the repo:
-
-```
-git pull
-```
-
-#### 1. You've made changes to some files. Now what?
-Now, you can open up your Text Editor of choice and make as many changes to files as you want. These are all local changes and will not be shown in the remote repository. These changes are only local to your local repository.
-
-#### 2. Checking your repo's status
-To see what changes were made since your previous commit, run:
-
-```
-git status
-```
-
-If no changes were made to files, your screen might look like the one on the left. If changes were made, your screen might look like the one on the right.
-
-No changes             |  Some changes
-:---------------------:|:---------------------:
-![](./images/gitstatus1.png)  |  ![](./images/gitstatus2.png)
-
-It's good to run `git status` whenever you're not sure if you've made changes since your previous commit. As you can see, Git tells you which file changes are _not staged (or added) for commit_ and which files are _untracked_. All of these file names are in red to grab your attention, but don't worry!
-
-When a file is listed as not staged for commit, that means that the file has changes that need to be added before commiting and pushing. When a file is listed as untracked, that means this is a new file in the repo that Git hasn't seen before, and you will also need to add it before committing and pushing.
-
-#### 3. Adding your file changes
-You must stage or add your changes before committing them and pushing them to the remote repo. I like to conceptualize this as: if you have changes that you've made, they must be put on a "stage" before Git can commit them. Anything on this "stage" will be ready for the next commit. Anything not on that stage will not be ready for the next commit.
-
-To add files, run this command:
-
-```
-git add <filename>
-```
-
-For example, in the screenshot below, I'm running `git add jennifer.txt` to add just `jennifer.txt` file to the "stage". When I run `git status` to see the status of my repo, Git tells me in green, "Hey! I see this file you just added called `jennifer.txt`." `jennifer.txt` shows up under "Changes to be committed" while `README.md` (which was not added) still shows up in red under "Changes not staged for commit".
-
-<img src="./images/gitadd1.png">
-
-You can also add a whole directory of file changes by running:
-
-```
-git add <directoryname>
-```
-
-Therefore, you can add all changes that you've made to files in the current directory you are in by running `git add .`. Below, I'm running `git add .` which adds both `jennifer.txt` and `README.md` to the "stage". Therefore, both files show up in green under "Changes to be committed".
-
-<img src="./images/gitadd2.png">
-
-#### 4. Committing your staged file changes
-Now that you have added the changed files you wanted onto the "stage", we can tell Git to grab all the changes on this "stage" and commit them. Again, I like to conceptualize this as: we have changes on this "stage," and Git can wrap these changes up into a single __commit__ which also is labeled with a __message__.
-
-To commit all your staged file changes, type the command:
-
-```git commit -m <message>```
-
-The `-m` means that we're going to attach a message with this commit. Replace `<message>` with whatever you want. You should detail what you added in this message. For example, below I ran the command `git commit -m "Adding instructions on Git workflow for lecture 2."`. This made all the staged changes into a local commit and cleared the "stage".
-
-<img src="./images/gitcommit1.png">
-
-Note: We made one commit for these changes, but remember that you can make several commits before you push.
-
-#### 5. Making sure your commit shows up in the log
-This is an optional step, but you can also make sure your local commits are actually there before you push your local commits to the remote repo. To do this, run:
-
-```
-git log
-```
-As you can see from this screenshot below, running `git log` will show you all the commits in your local repo. You can try to find the commit that you just made in this log by finding your message.
-
-Below, I ran `git log` and I'm trying to find the commit I just made that had the message `"Adding instructions on Git workflow for lecture 2."`. The red rectangle is boxed around this commit. Notice that the commit has an id or has. For instance, my commit's hash is 4ed01bee900b4d0cfd5700357f0b00cf726848f3. This is useful if you want to go back to a previous version of your repo. We won't cover how to go back to a previous commit in history, but you can look this up on your own or ask us in Office Hours/Piazza.
-
-<img src="./images/gitlog.png">
-
-#### 6. Pushing your commits 
-You're almost there! Now that we've made changes, added those changes, and committed the changes, all we have to do is push the commits.
-
-To push your commits, run the command:
-
-```
-git push origin master
-```
-
-The `origin` in the command specifies that you’re pushing to the `origin` remote. By convention, that’s the remote repository you cloned from. The `master` refers to the `master` branch. We won’t use branches in 6.178. `master` is Git’s default branch name, so all our commits will be on master, and that’s the branch we want to push.
-
-Below is an example of pushing commits to the remote repo:
-<img src="./images/gitpush.png">
-
-If the push succeeded, you should see a line like:
-```
-8cce30d..2da8385  master -> master
-```
-
-### Exercise 0: Create your own `lec2-<kerberos>` repo.
-__TODO:__ Create a repo in the [6178-2017 organization](https://github.mit.edu/6178-2017) by clicking on "New Repository". Name your repository `lec2-<kerberos>` where `<kerberos>` is your kerberos or username to your Github MIT Enterprise account. Make this repo __private__. Don't checkmark the box that will initialize the repo with a README.
-
-Clone __this__ repo (https://github.mit.edu/6178-2017/lec2). Then go into your clone of lec2 repo with `cd lec2`. Then enter the command:
-```
-git push git@github.mit.edu:6178-2017/lec2-<kerberos>.git
-```
-This will push this repo's code onto your newly created personal `lec2-<kerberos>` repo. You'll be working off that repo for the rest of this class, so go ahead and clone your new personal repo:
-```
-git clone git@github.mit.edu:6178-2017/lec2-jjz.git 
-```
-In the future, this is how we're going to check if you've done your in-lecture exercises! We'll remind you how to do this process in future lectures.
-
-*Remember if the SSH version of cloning is not working for you for some reason, try the HTTPS version and vice versa.
+## Variables
 
 ## Methods
 Methods are similar to functions in Python. Let's look at this example below.
