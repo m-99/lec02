@@ -89,7 +89,7 @@ The first line of the spec details what the method does in plain English. Each p
 ### Exercise: Write a spec
 Write a spec, formatted as above, for your `estimateRidePrice` method.
 
-## More on Types
+## More on Variables
 Recall from [Lecture 1](https://github.mit.edu/6178-2018/lec1#types) that variables in Java are _statically typed_, meaning the declaration must include the type of the variable.
 ```
 int myAge = 23;
@@ -135,6 +135,26 @@ One unfortunate side effect of representing object types as references is that t
 String myName = null;
 int charactersInName = myName.length(); // Not allowed, will throw an error
 ```
+
+### `static` Variables
+So far, we've dealt with variables defined within methods. We can also define variables within _classes_, outside of any method.
+```
+public class Main {
+    private static int counter = 0;
+    
+    public static int count() {
+        counter++;
+        return counter;
+    }
+}
+```
+
+The `counter` variable is visible to any method within the `Main` class. Due to the `private` modifier, it cannot be accessed by other classes. Removing the `static` modifier would make it an _instance_ variable, which we will discuss in a future class.
+
+#### Scope
+Generally, variables can be accessed anywhere within the _closest enclosing set of curly braces {}_.
+* Variables declared in a method can only be accessed within the method.
+* Variables declared in a class can be accessed within the class. `public` class variables can be accessed by other classes.
 
 ## Arrays
 Arrays represent fixed-size sequences of values. You can create arrays of any type, and they can be multidimensional:
