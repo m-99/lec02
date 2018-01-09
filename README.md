@@ -23,12 +23,20 @@ Unlike Lecture 1, you will not need to create your own repo for lecture exercise
 TODO Blurb about how to use, whether we require partners, etc
 
 ## Methods
-Methods are similar to functions in Python. Let's look at this example below.
+Methods are similar to functions in Python. They are attached to classes. For example.
 ```
-public static double fahrenheitToCelsius(double temperatureFahrenheit) {
-  double ratio = 5.0 / 9.0;
-  double offset = 32.0;
-  return (temperatureFahrenheit - offset) * ratio;
+public class UnitConverter {
+
+  // ... other variables and methods ...
+  
+  public static double fahrenheitToCelsius(double temperatureFahrenheit) {
+    double ratio = 5.0 / 9.0;
+    double offset = 32.0;
+    return (temperatureFahrenheit - offset) * ratio;
+  }
+
+  // ... other variables and methods ...
+  
 }
 ```
 A method is composed of 5 parts (in order): the modifiers, return type, method name, parameters, and the method body. (There is a 6th part, the exceptions list, which we won't talk about in this lecture.)
@@ -55,7 +63,15 @@ double temperatureCelsius = fahrenheitToCelsius(32.0); // 0.0
 
 Now with our knowledge of methods and how they are written, how is the special `main` function written?
 ```
-public static void main(String[] args) {
+public class Main {
+
+  // ... other variables and methods ...
+  
+  public static void main(String[] args) {
+  }
+
+  // ... other variables and methods ...
+  
 }
 ```
 * __modifier__ - `public`, `static` (visible to other classes, independent of instance)
