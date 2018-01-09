@@ -3,6 +3,7 @@
 ## Announcements
 * Syllabus and class schedule have been posted to [Stellar](http://stellar.mit.edu/S/course/6/ia18/6.178/).
 * Concerns? Anonymous feedback: http://bit.ly/6178feedback
+* Problem Set 1 out tonight.
 
 ### Clone this Repo
 * Open Terminal or Git Bash.
