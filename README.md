@@ -24,7 +24,7 @@ TODO Blurb about how to use, whether we require partners, etc
 
 ## Methods
 Methods are similar to functions in Python. They are attached to classes. For example.
-```
+```java
 public class UnitConverter {
 
   // ... other variables and methods ...
@@ -57,12 +57,12 @@ For the above example method:
   * This code will be executed if the method is called.
 
 To call this method from within the same class, just write the method name and provide the parameters necessary. Here we're storing the result in a `double` named `temperatureCelsius`:
-```
+```java
 double temperatureCelsius = fahrenheitToCelsius(32.0); // 0.0
 ```
 
 Now with our knowledge of methods and how they are written, how is the special `main` function written?
-```
+```java
 public class Main {
 
   // ... other variables and methods ...
@@ -91,7 +91,7 @@ A method's __specification (or spec)__ is a set of comments attached to the meth
 The job of a specification is to describe the output of the method given the inputs. If the inputs satisfy the requirements outlined in the spec, then the method will produce an output that satisfies the requirements outlined in the spec.
 
 An example spec for the `fahrenheitToCelsius` method.
-```
+```java
 /**
  * Converts the temperature in Fahrenheit to the temperature in Celsius
  * @param temperatureFahrenheit the temperature in Fahrenheit
@@ -108,7 +108,7 @@ Write a spec, formatted as above, for your `estimateRidePrice` method.
 
 ## More on Variables
 Recall from [Lecture 1](https://github.mit.edu/6178-2018/lec1#types) that variables in Java are _statically typed_, meaning the declaration must include the type of the variable.
-```
+```java
 int myAge = 23;
 ```
 
@@ -132,7 +132,7 @@ Unlike primitives, which are represented as literal values in memory, variables 
 
 #### Operations on Objects
 A major, practical difference between primitives and objects is that objects (defined as classes - more in future lectures) can define their own operations, accessed via `theObject.theOperation(parameters)`. For example, String defines a `.length()` operation which allows you to count its number of characters. Arrays have a similar `.length` property. Primitives have no operations of their own - they are all pre-defined by the Java language itself (`+`, `%%`).
-```
+```java
 String myName = "Richard";
 int charactersInName = myName.length(); // 7
 char thirdCharacterInName = myName.charAt(2); // 'c'
@@ -140,7 +140,7 @@ char thirdCharacterInName = myName.charAt(2); // 'c'
 
 #### Comparisons: `==` vs `.equals()`
 Sometimes we want to check whether two variables have the same value. For primitives, we use `==`; for objects, we use `.equals()`.
-```
+```java
 int a, b;
 boolean aEqualsB = a == b;
 String c, d;
@@ -149,7 +149,7 @@ boolean cEqualsD = a.equals(d);
 
 ### `final`
 Variable declarations can have additional keywords attached to them. `final` is one such keyword, which means that the variable can only be assigned once. This is useful for defining constants, and making sure their values never change.
-```
+```java
 final int myAge = 21;
 ...
 myAge = 22; // Not allowed, won't compile
@@ -157,14 +157,14 @@ myAge = 22; // Not allowed, won't compile
 
 ### `null`
 One unfortunate side effect of representing object types as references is that the reference can point to nothing - or `null`. A `null` value means literally nothing, and you can't call operations on a variable whose value is `null`.
-```
+```java
 String myName = null;
 int charactersInName = myName.length(); // Not allowed, will throw an error
 ```
 
 ### `static` Variables
 So far, we've dealt with variables defined within methods. We can also define variables within _classes_, outside of any method.
-```
+```java
 public class Main {
     private static int counter = 0;
     
@@ -184,19 +184,19 @@ Generally, variables can be accessed anywhere within the _closest enclosing set 
 
 ## Arrays
 Arrays represent fixed-size sequences of values. You can create arrays of any type, and they can be multidimensional:
-```
+```java
 String[] months; // 1d String array
 int[][] coordinates; // 2d int array
 ```
 
 Since arrays are fixed-size, you have to declare its size when you assign its initial value:
-```
+```java
 String[] months = new String[12]; // the months sequence has 12 slots, each of which is a String (or null)
 char[] mit = new char[] {'I', 'H', 'T', 'F', 'P'}; // the mit sequence has 5 slots, each of which is a char
 ```
 
 You can obtain and assign values at specific indices in an array:
-```
+```java
 char middleChar = mit[2]; // 'T'
 mit[3] = 'P'; // mit is now IHTPP
 ```
@@ -208,7 +208,7 @@ Complete __TODO #2__: create an array of type `String` called `months` with size
 
 #### A note on Aliasing
 What does this do?
-```
+```java
 int[] piDigits = new int[] {3, 1, 4, 1, 5, 9};
 int[] myDigits = piDigits;
 myDigits[3] = 7;
@@ -218,14 +218,14 @@ myDigits[3] = 7;
 Enum is a special data type that allows a variable to take on one of a predefined set of values. Each of these values is named, and is typically ALL_UPPERCASE.
 
 An enum representing Direction:
-```
+```java
 public enum Direction {
     NORTH, EAST, SOUTH, WEST
 }
 ```
 
 To declare a variable of type Direction:
-```
+```java
 Direction direction = Direction.NORTH;
 ```
 
@@ -234,7 +234,7 @@ Create an enum called `Day`, whose values are the days of the week. In Eclipse, 
 
 ### Switch Statements with Enums
 Recall [switch statements](https://github.mit.edu/6178-2018/lec1#switch-statements). These are most useful when dealing with Enums.
-```
+```java
 Direction direction;
 switch (direction) {
   case NORTH:
