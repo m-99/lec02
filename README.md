@@ -206,7 +206,7 @@ Direction direction = Direction.NORTH;
 ### Exercise: Create an Enum
 Create an enum called `Day`, whose values are the days of the week. In Eclipse, select _File -> New -> Enum_. Make sure the package says `lec2`.
 
-## Switch Statements with Enums
+### Switch Statements with Enums
 Recall [switch statements](https://github.mit.edu/6178-2018/lec1#switch-statements). These are most useful when dealing with Enums.
 ```
 Direction direction;
