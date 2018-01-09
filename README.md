@@ -158,7 +158,7 @@ mit[3] = 'P'; // mit is now IHTPP
 In a future lecture, we will explore additional types in Java which can represent dynamically-sized sequences.
 
 ### Exercise: Create an Array
-__TODO__: In `main`, create an array of type `String` called `months` with size 12. Populate each element of the array with the name of the month as a `String`.
+Complete __TODO #2__: create an array of type `String` called `months` with size 12. Populate each element of the array with the name of the month as a `String`.
 
 #### A note on Aliasing
 What does this do?
@@ -184,7 +184,7 @@ Direction direction = Direction.NORTH;
 ```
 
 ### Exercise: Create an Enum
-__TODO__: Create an enum called `Day`, whose values are the days of the week. In Eclipse, select _File -> New -> Enum_. Make sure the package says `lec2`.
+Create an enum called `Day`, whose values are the days of the week. In Eclipse, select _File -> New -> Enum_. Make sure the package says `lec2`.
 
 ## Switch Statements with Enums
 Recall [switch statements](https://github.mit.edu/6178-2018/lec1#switch-statements). These are most useful when dealing with Enums.
