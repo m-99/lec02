@@ -1,16 +1,9 @@
 # 6.178 Lecture #2 - Variables, Methods, Strings, Enums, and Arrays
 
-## More Logistics
-* [Instructions on Cloning & Submitting Psets](https://github.mit.edu/6178-2017/pset-instructions)
-* You will be given a suite of tests but there are also a suite of hidden tests that staff will use to give you additional feedback. You will not be penalized if you do not pass the hidden suite of tests.
-* You will pass the pset if you pass all the tests that were given to you.
-* You can review the [Syllabus](https://stellar.mit.edu/S/course/6/ia17/6.178/courseMaterial/topics/topic1/syllabus/Syllabus/Syllabus.pdf) on Stellar for more information.
-* We have a schedule of our classes on Stellar [here](https://stellar.mit.edu/S/course/6/ia17/6.178/courseMaterial/topics/topic1/resource/Schedule_(1)/Schedule_(1).pdf)
-* If you didn't get a repo for pset #1, please let us know by filling out [this Google form](https://goo.gl/forms/TDHtVW5f3ncpWImE2).
-* Please sign up for the [Piazza](https://piazza.com/class/ixbeg17oz79vm) to get updated on pset revisions and other things.
+## Announcements
+* Syllabus and class schedule have been posted to [Stellar](http://stellar.mit.edu/S/course/6/ia18/6.178/).
 
 ### Clone this Repo
-
 * Open Terminal or Git Bash.
 * Go into your 6.178 directory: for example, `cd ~/Documents/6.178`
 * Run: `git clone git@github.mit.edu:6178-2018/lec2.git`
@@ -19,178 +12,199 @@
   * If you did not set up your SSH keys, refer to [Lecture 1](https://github.mit.edu/6178-2018/lec1#github).
 * `cd lec2`
 
-Unlike Lecture 1, you will not need to create your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check.
+Unlike Lecture 1, you will not need to create your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check. You will also use this tool in 6.031.
 
 ### Install Constellation
-
 * Go to [https://constellation.csail.mit.edu/](https://constellation.csail.mit.edu/)
 * Click "Install the Constellation plug-in". Open up Eclipse and follow the instructions.
 * Once Eclipse has restarted, you should see a "Collaborate" button along the bottom.
 
 TODO Blurb about how to use, whether we require partners, etc
 
-## Variables
-
 ## Methods
 Methods are similar to functions in Python. Let's look at this example below.
-
 ```
-public static double fahrenheitToCelsius(double tempFahrenheit) {
-  double tempCelsius;
-  tempCelsius = (tempFahrenheit - 32.0) * 5.0 / 9.0;
-  return tempCelsius;
+public static double fahrenheitToCelsius(double temperatureFahrenheit) {
+  double ratio = 5.0 / 9.0;
+  double offset = 32.0;
+  return (temperatureFahrenheit - offset) * ratio;
 }
 ```
-A method is composed of 6 parts (in order): the modifiers, return type, method name, parameters, an exception list (we'll discuss this in a later lecture), and the method body.
+A method is composed of 5 parts (in order): the modifiers, return type, method name, parameters, and the method body. (There is a 6th part, the exceptions list, which we won't talk about in this lecture.)
 
 For the above example method:
-
 * __modifier__ - `public`, `static`
-  * `public` means the method is visible to the "world" (not just visible to the class itself).
-  * `static` means the method exists independently of any instance of the class. Usually only uses variables given as parameters and not instance variables.
-  * You'll learn more about these modifiers in a future lecture about classes.
+  * `public` means the method is visible not just within this class, but to other classes in your program as well.
+    * To prevent other classes from calling this method, we can make this `private`.
+  * `static` means the method exists independently of any _instance_ of the class - more on that in future lectures. For now, think of it as a method that you can call directly from the `main` method.
 * __return type__ - `double`
-  * This means that this method returns a variable of type `double`.
+  * This means that this method returns a value of type `double`.
 * __method name__ - `fahrenheitToCelsius`
-  * The name of the method must be unique to the class to prevent __overloading__.
-  * __Overloading__ means that two methods have the same method name but different parameters. You can read more about them [here](https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html)
+  * The name of the method.
 * __parameters__ - `(double temperatureFahrenheit)`
-  * This method only has one parameter, but you can have as many parameters as you want in methods.
-  * parameters must be declared as `<parameterType> <parameterName>`
-* __exception list__ - N/A
-  * This method doesn't have an exception list so don't worry about this. We'll discuss exceptions in a future lecture.
-* __method body__ - anything in between the curly braces
-  * Any code between the curly braces of the method will be executed if the method is called. 
+  * This method only has one parameter, but you can have multiple parameters separated by commas.
+  * Parameters are declared with types, similar to variables: `<parameterType> <parameterName>`
+* __method body__ - code between the curly braces
+  * This code will be executed if the method is called.
 
-To call this method, just write the method name and provide the parameters necessary. Here we're storing the result in a `double` named `tempCelsius`:
+To call this method from within the same class, just write the method name and provide the parameters necessary. Here we're storing the result in a `double` named `temperatureCelsius`:
 ```
-double tempCelsius = fahrenheitToCelsius(32.0); // should be 0.0
+double temperatureCelsius = fahrenheitToCelsius(32.0); // 0.0
 ```
 
 Now with our knowledge of methods and how they are written, how is the special `main` function written?
-
 ```
 public static void main(String[] args) {
 }
 ```
-* __modifier__ - `public`, `static`
-* __return type__ - `void`
+* __modifier__ - `public`, `static` (visible to other classes, independent of instance)
+* __return type__ - `void` (special return type representing nothing returned)
 * __method name__ - `main`
-* __parameters__ - `(String[] args)`
+* __parameters__ - `(String[] args)` (a String array)
+* __method body__ - the code to execute when the program runs
 
-### Exercise 1: Write the `estimateRidePrice` method.
-__TODO:__ In your personal `lec2-<kerberos>` repo, modify lines 20 & 21 in `Main.java` where we assign `uberPrice` and `lyftPrice` so that we abstract this calculation away into a method. To do this, create a method called `estimateRidePrice`. Allow this method to take all the parameters necessary to calculate the estimated price for an Uber and for a Lyft.
+### Exercise: Write a method
+Complete __TODO #1__ in `Main.java`.
+* Create a method called `estimateRidePrice` in the same class, and allow it to take all the parameters necessary to calculate the estimated price for a ride from either Uber or Lyft.
+* Modify the code in `main` to call that method instead of performing the calculations.
 
 ## Specifications
-We won't go into depth with specifications, but you can read more about them [here](http://web.mit.edu/6.005/www/fa16/classes/06-specifications/specs/). __Specifications (or specs)__ is a set of comments before a method that tells people all they need to know about the method. Specs are important for software engineers because they allow us to read about what a method does _without actually reading the code_. Specs should have enough information for anyone to understand what the method does and should give enough wiggle room for an engineer to implement the method.
+A method's __specification (or spec)__ is a set of comments attached to the method that tells the user of the program everything they need to know about the method. Specs are important for software engineers because they allow us to understand and use other people's programs _without reading the actual code_.
 
-Specs solidify inputs and outputs to a method. If inputs to the method satisfy the requirements outlined in the specs, then the method will guarantee an output that satisfies the requirements outlined in the specs.
+The job of a specification is to describe the output of the method given the inputs. If the inputs satisfy the requirements outlined in the spec, then the method will produce an output that satisfies the requirements outlined in the spec.
 
-Below is an example of a spec for the same `fahrenheitToCelsius` method.
-
+An example spec for the `fahrenheitToCelsius` method.
 ```
 /**
-* Converts the temperature in Fahrenheit to the temperature in Celsius
-* @param tempFahrenheit the temperature in Fahrenheit
-* @return the temperature in Celsius
-*/
+ * Converts the temperature in Fahrenheit to the temperature in Celsius
+ * @param temperatureFahrenheit the temperature in Fahrenheit
+ * @return the temperature in Celsius
+ */
 public static double fahrenheitToCelsius(double tempFahrenheit) {
-  double tempCelsius;
-  tempCelsius = (tempFahrenheit - 32.0) * 5.0 / 9.0;
-  return tempCelsius;
+  ...
 }
 ```
-The first line of the spec details what the method does in plain English. `@param` tells us the name of the parameter and what it is in plain English. `@return` tells us what the method will return in plain English.
+The first line of the spec details what the method does in plain English. Each parameter, along with any constraints, is described in a `@param`. The return value, along with any constraints, is described in the `@return`.
 
-### Exercise 2: Add specs to your `estimateRidePrice` method.
-__TODO:__ Write some specs for your `estimateRidePrice` method. Be sure to write out all the parts of the spec.
+### Exercise: Write a spec
+Write a spec, formatted as above, for your `estimateRidePrice` method.
 
-## Switch Statements
-Switch statements are similar to if statements but is a shorter form. There is a special `default` case after all the other cases. Each case has to end with a `break;` statement.
-
+## More on Types
+Recall from [Lecture 1](https://github.mit.edu/6178-2018/lec1#types) that variables in Java are _statically typed_, meaning the declaration must include the type of the variable.
 ```
-String monthString;
-switch (month) {
-  case 1:
-    monthString = "January";
-    break;
-  case 2:
-    monthString = "February";
-    break;
-  // More case statements for the rest of the month...
-  default:
-    monthString = "Invalid Month";
-    break;
-}
+int myAge = 23;
+```
+
+### Primitive Types
+Java has a set of _primitive_ types which represent very simple data. These types are lowercased. The ones that we will deal with the most:
+* `boolean` (true or false)
+* `char` (single character)
+* `int` (integer within ± 2^31)
+* `double` (floating-point numbers)
+* [a complete list](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+
+You can think of primitive types as having __direct representation__ in the computer's memory. When you operate on a variable of type `int`, the data that gets shuttled around your computer's circuitry is the literal binary representation of that integer.
+
+### Object Types
+Java also has more complex types called _objects_. These types are typically uppercased. Any type which is not a primitive is an object. The simplest examples:
+* `String` (sequences of characters, like "Hello there")
+* Arrays (sequences of values of any type; more in a bit)
+* Enums (a finite set of named values; more in a bit)
+
+Unlike primitives, which are represented as literal values in memory, variables of object types are represented as __references__ to the location of their actual data. This data has a potentially complex structure and usually takes up more space.
+
+#### Operations on Objects
+A major, practical difference between primitives and objects is that objects (defined as classes - more in future lectures) can define their own operations, accessed via `theObject.theOperation(parameters)`. For example, String defines a `.length()` operation which allows you to count its number of characters. Arrays have a similar `.length` property. Primitives have no operations of their own - they are all pre-defined by the Java language itself (`+`, `%%`).
+```
+String myName = "Richard";
+int charactersInName = myName.length(); // 7
+char thirdCharacterInName = myName.charAt(2); // 'c'
+```
+
+### `final`
+Variable declarations can have additional keywords attached to them. `final` is one such keyword, which means that the variable can only be assigned once. This is useful for defining constants, and making sure their values never change.
+```
+final int myAge = 21;
+...
+myAge = 22; // Not allowed, won't compile
+```
+
+### `null`
+One unfortunate side effect of representing object types as references is that the reference can point to nothing - or `null`. A `null` value means literally nothing, and you can't call operations on a variable whose value is `null`.
+```
+String myName = null;
+int charactersInName = myName.length(); // Not allowed, will throw an error
+```
+
+## Arrays
+Arrays represent fixed-size sequences of values. You can create arrays of any type, and they can be multidimensional:
+```
+String[] months; // 1d String array
+int[][] coordinates; // 2d int array
+```
+
+Since arrays are fixed-size, you have to declare its size when you assign its initial value:
+```
+String[] months = new String[12]; // the months sequence has 12 slots, each of which is a String (or null)
+char[] mit = new char[] {'I', 'H', 'T', 'F', 'P'}; // the mit sequence has 5 slots, each of which is a char
+```
+
+You can obtain and assign values at specific indices in an array:
+```
+char middleChar = mit[2]; // 'T'
+mit[3] = 'P'; // mit is now IHTPP
+```
+
+In a future lecture, we will explore additional types in Java which can represent dynamically-sized sequences.
+
+### Exercise: Create an Array
+__TODO__: In `main`, create an array of type `String` called `months` with size 12. Populate each element of the array with the name of the month as a `String`.
+
+#### A note on Aliasing
+What does this do?
+```
+int[] piDigits = new int[] {3, 1, 4, 1, 5, 9};
+int[] myDigits = piDigits;
+myDigits[3] = 7;
+// What is the value of myDigits? What is the value of piDigits?
 ```
 ## Enums
-Enum is a special data type that enables for a variable to be a set of predefined constants. The variable must be equal to one of the values that have been predefined for it. Internally the class represents the different constants as integers.
+Enum is a special data type that allows a variable to take on one of a predefined set of values. Each of these values is named, and is typically ALL_UPPERCASE.
 
-Below is an example of an enum Direction:
+An enum representing Direction:
 ```
 public enum Direction {
     NORTH, EAST, SOUTH, WEST
 }
 ```
 
-To declare a variable as the enum Direction:
+To declare a variable of type Direction:
 ```
 Direction direction = Direction.NORTH;
 ```
 
-### Exercise 3: Create the `Day` Enum
-__TODO__: In your personal `lec2-<kerberos>` repo, create an enum called `Day`. A variable of type `Day` can be any of the days of the week.
+### Exercise: Create an Enum
+__TODO__: Create an enum called `Day`, whose values are the days of the week. In Eclipse, select _File -> New -> Enum_. Make sure the package says `lec2`.
 
-## Strings
-
-To create a String literal:
+## Switch Statements with Enums
+Recall [switch statements](https://github.mit.edu/6178-2018/lec1#switch-statements). These are most useful when dealing with Enums.
 ```
-String name = "Jennifer";
-```
-Here are some helpful methods that come with `String`:
-```
-String firstName = "Jennifer";
-
-// Get the length of a String
-int len = firstName.length(); // should be 8
-
-// Get the character at a specific index (0-indexed) of the String
-char secondLetter = firstName.charAt(1); // should be 'e'
-
-// Concatenating two strings
-String lastName = "Zhang";
-String fullName = firstName.concat(lastName);
-```
-You can read more about Strings [here](https://docs.oracle.com/javase/tutorial/java/data/strings.html)
-
-## Arrays
-You can create 1d or 2d arrays:
-```
-String[] months; // 1d array
-int[][] coordinates; // 2d array
-```
-
-You can't dynamically allocate space for arrays. Therefore, you have to declare an array's size at assignment:
-```
-String[] months; // 1d array
-months = new String[12];
-```
-
-You can index into an array as so:
-```
-char firstNameArray = {'J', 'e', 'n', 'n', 'i', 'f', 'e', 'r'};
-char firstInitial = firstNameArray[0]; // should be 'J'
-```
-You can read more about arrays [here](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html). In a later lecture we'll learn more about more useful data types other than arrays that are very similar to arrays.
-
-### Exercise 4: Create a `months` array and populate it.
-__TODO__: Create an array of type `String` called `months` of size 12. Populate each element of the array with the name of the month as a `String`.
-
-## Final Exercise
-__TODO__: Push all your work for today's lecture exercises to your personal lec2 repo (`https://github.mit.edu/6178-2017/lec2-<kerberos>`).
-Review how to do so in the [Git Workflow section](https://github.mit.edu/6178-2017/lec2#git-workflow). In short, follow these steps:
-```
-git add .
-git commit -m <some message here>
-git push origin master
+Direction direction;
+switch (direction) {
+  case NORTH:
+    System.out.println("You're heading north");
+    break;
+  case SOUTH:
+    System.out.println("You're heading south");
+    break;
+  case EAST:
+    System.out.println("You're heading east");
+    break;
+  case WEST:
+    System.out.println("You're heading west");
+    break;
+  default:
+    System.out.println("Unknown direction");
+    break;
+}
 ```
