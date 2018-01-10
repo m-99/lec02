@@ -7,6 +7,7 @@
 
 ### Last Time
 * Set up tools, import into Eclipse, simple Java, basic Git usage
+* [Solutions](https://github.mit.edu/6178-2018/lec1-solutions/blob/master/lec1-starting-code/src/lec1/Main.java) are posted
 * Review [Git commit and push](https://github.mit.edu/6178-2018/lec1#git-commit-and-push)
 
 ### Clone this Repo
