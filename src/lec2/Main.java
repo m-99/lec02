@@ -13,18 +13,15 @@ public class Main {
 		double uberServiceFee = 1.15;
 		double lyftServiceFee = 1.70;
 
-		// TODO #1: move this calculation to an `estimateRidePrice` method
+		// TODO #1: move the price calculation in these next two lines
+		//          to an `estimateRidePrice` method
 		double uberPrice = uberBasePrice + uberServiceFee + uberRate * milesToTravel;
 		double lyftPrice = lyftBasePrice + lyftServiceFee + lyftRate * milesToTravel;
 
-		double difference;
-
 		if (uberPrice > lyftPrice) {
-			difference = uberPrice - lyftPrice;
-			System.out.printf("You should take a Lyft. You saved $%.2f!\n", difference);
+			System.out.printf("You should take a Lyft. You saved $%.2f!\n", uberPrice - lyftPrice);
 		} else if (lyftPrice > uberPrice) {
-			difference = lyftPrice - uberPrice;
-			System.out.printf("You should take a Uber. You saved $%.2f!\n", difference);
+			System.out.printf("You should take a Uber. You saved $%.2f!\n", lyftPrice - uberPrice);
 		} else {
 			System.out.println("You can take either an Uber or a Lyft.");
 		}
