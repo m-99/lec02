@@ -23,7 +23,8 @@ Unlike Lecture 1, you will not need to create or push to your own repo for lectu
 * Click "Install the Constellation plug-in". Open up Eclipse and follow the instructions.
 * Once Eclipse has restarted, you should see a "Collaborate" button along the bottom.
 * Click "Collaborate", select "lec2", and click "OK".
-* TODO single-user mode
+* In the browser: if you wish to collaborate with someone, type in their joincode. If you wish to work by yourself, type in your own joincode.
+* To verify your connection: type something in `Main.java`, and check that your work appears here: https://constellation.csail.mit.edu/edit/src/lec2/Main.java
 
 ## Methods
 Methods are similar to functions in Python. They are attached to classes. For example.
