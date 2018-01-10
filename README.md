@@ -98,7 +98,7 @@ An example spec for the `fahrenheitToCelsius` method.
  * @param temperatureFahrenheit the temperature in Fahrenheit
  * @return the temperature in Celsius
  */
-public static double fahrenheitToCelsius(double tempFahrenheit) {
+public static double fahrenheitToCelsius(double temperatureFahrenheit) {
   ...
 }
 ```
@@ -125,9 +125,9 @@ You can think of primitive types as having __direct representation__ in the comp
 
 ### Object Types
 Java also has more complex types called _objects_. These types are typically uppercased. Any type which is not a primitive is an object. The simplest examples:
-* `String` (sequences of characters, like "Hello there")
-* Arrays (sequences of values of any type; more in a bit)
-* Enums (a finite set of named values; more in a bit)
+* [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) (sequences of characters, like "Hello there")
+* [Arrays](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html) (sequences of values of any type; more in a bit)
+* [Enums](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) (a finite set of named values; more in a bit)
 
 Unlike primitives, which are represented as literal values in memory, variables of object types are represented as __references__ to the location of their actual data. This data has a potentially complex structure and usually takes up more space.
 
@@ -140,12 +140,19 @@ char thirdCharacterInName = myName.charAt(2); // 'c'
 ```
 
 #### Comparisons: `==` vs `.equals()`
-Sometimes we want to check whether two variables have the same value. For primitives, we use `==`; for objects, we use `.equals()`.
+Sometimes we want to check whether two variables have the same value. For primitives, we use `==`; for objects, we use the `.equals()` operation.
 ```java
 int a, b;
 boolean aEqualsB = a == b;
 String c, d;
 boolean cEqualsD = a.equals(d);
+```
+
+#### `null`
+One unfortunate side effect of representing object types as references is that the reference can point to nothing - or `null`. A `null` value means literally nothing, and you can't call operations on a variable whose value is `null`.
+```java
+String myName = null;
+int charactersInName = myName.length(); // Not allowed, will throw an error
 ```
 
 ### `final`
@@ -154,13 +161,6 @@ Variable declarations can have additional keywords attached to them. `final` is 
 final int myAge = 21;
 ...
 myAge = 22; // Not allowed, won't compile
-```
-
-### `null`
-One unfortunate side effect of representing object types as references is that the reference can point to nothing - or `null`. A `null` value means literally nothing, and you can't call operations on a variable whose value is `null`.
-```java
-String myName = null;
-int charactersInName = myName.length(); // Not allowed, will throw an error
 ```
 
 ### `static` Variables
