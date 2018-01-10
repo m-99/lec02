@@ -16,6 +16,7 @@
 * Run: `git clone git@github.mit.edu:6178-2018/lec2.git`
   * Issues? [Review SSH key setup](https://github.mit.edu/6178-2018/lec1#github).
   * Alternatives: `git clone https://github.mit.edu/6178-2017/lec2.git`, or use [personal access tokens](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
+* Import lec2 [into Eclipse](https://github.mit.edu/6178-2018/lec1#importing-this-repo-to-eclipse)
 
 Unlike Lecture 1, you will not need to create or push to your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check. You will also use this tool in 6.031.
 
