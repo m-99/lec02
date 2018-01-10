@@ -10,18 +10,16 @@
 * Go into your 6.178 directory: for example, `cd ~/Documents/6.178`
 * Run: `git clone git@github.mit.edu:6178-2018/lec2.git`
   * If that didn't work, try `git clone https://github.mit.edu/6178-2017/lec2.git`.
-  * You should not need to put in your username or password if you setup your SSH keys correctly.
-  * If you did not set up your SSH keys, refer to [Lecture 1](https://github.mit.edu/6178-2018/lec1#github).
-* `cd lec2`
+  * You should not need to put in your username or password if you [setup your SSH keys correctly](https://github.mit.edu/6178-2018/lec1#github).
 
-Unlike Lecture 1, you will not need to create your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check. You will also use this tool in 6.031.
+Unlike Lecture 1, you will not need to create or push to your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check. You will also use this tool in 6.031.
 
 ### Install Constellation
 * Go to [https://constellation.csail.mit.edu/](https://constellation.csail.mit.edu/)
 * Click "Install the Constellation plug-in". Open up Eclipse and follow the instructions.
 * Once Eclipse has restarted, you should see a "Collaborate" button along the bottom.
-
-TODO Blurb about how to use, whether we require partners, etc
+* Click "Collaborate", select "lec2", and click "OK".
+* TODO single-user mode
 
 ## Methods
 Methods are similar to functions in Python. They are attached to classes. For example.
@@ -62,7 +60,7 @@ To call this method from within the same class, just write the method name and p
 double temperatureCelsius = fahrenheitToCelsius(32.0); // 0.0
 ```
 
-Now with our knowledge of methods and how they are written, how is the special `main` function written?
+Now let's look back at the special `main` function:
 ```java
 public class Main {
 
@@ -132,7 +130,7 @@ Java also has more complex types called _objects_. These types are typically upp
 Unlike primitives, which are represented as literal values in memory, variables of object types are represented as __references__ to the location of their actual data. This data has a potentially complex structure and usually takes up more space.
 
 #### Operations on Objects
-A major, practical difference between primitives and objects is that objects (defined as classes - more in future lectures) can define their own operations, accessed via `theObject.theOperation(parameters)`. For example, String defines a `.length()` operation which allows you to count its number of characters. Arrays have a similar `.length` property. Primitives have no operations of their own - they are all pre-defined by the Java language itself (`+`, `%%`).
+A major, practical difference between primitives and objects is that objects (defined as classes - more in future lectures) can define their own operations, accessed via `theObject.theOperation(parameters)`. For example, String has a `.length()` operation which allows you to count its number of characters. Primitives have no operations of their own - they are all pre-defined by the Java language itself (`+`, `%%`).
 ```java
 String myName = "Richard";
 int charactersInName = myName.length(); // 7
@@ -140,7 +138,7 @@ char thirdCharacterInName = myName.charAt(2); // 'c'
 ```
 
 #### Comparisons: `==` vs `.equals()`
-Sometimes we want to check whether two variables have the same value. For primitives, we use `==`; for objects, we use the `.equals()` operation.
+Sometimes we want to check whether two variables have the same value. For primitives, we use `==`; for objects, we use `.equals()`.
 ```java
 int a, b;
 boolean aEqualsB = a == b;
@@ -149,21 +147,21 @@ boolean cEqualsD = a.equals(d);
 ```
 
 #### `null`
-One unfortunate side effect of representing object types as references is that the reference can point to nothing - or `null`. A `null` value means literally nothing, and you can't call operations on a variable whose value is `null`.
+One unfortunate side effect of representing object types as references is that the reference can point to nothing - or `null`. You can't call operations on a variable whose value is `null`, since there is no object there.
 ```java
 String myName = null;
 int charactersInName = myName.length(); // Not allowed, will throw an error
 ```
 
 ### `final`
-Variable declarations can have additional keywords attached to them. `final` is one such keyword, which means that the variable can only be assigned once. This is useful for defining constants, and making sure their values never change.
+Variable declarations can have additional keywords attached to them. `final` is one such keyword, which means that the variable can only be assigned once. This is useful for defining constants whose values should never change.
 ```java
 final int myAge = 21;
 ...
 myAge = 22; // Not allowed, won't compile
 ```
 
-### `static` Variables
+### `static`
 So far, we've dealt with variables defined within methods. We can also define variables within _classes_, outside of any method.
 ```java
 public class Main {
@@ -176,12 +174,14 @@ public class Main {
 }
 ```
 
-The `counter` variable is visible to any method within the `Main` class. Due to the `private` modifier, it cannot be accessed by other classes. Removing the `static` modifier would make it an _instance_ variable, which we will discuss in a future class.
+The `counter` variable is visible to any method within the `Main` class. The `private` modifier means it cannot be accessed by other classes. Removing the `static` modifier would make it an _instance_ variable, which we will discuss in a future class.
 
 #### Scope
 Generally, variables can be accessed anywhere within the _closest enclosing set of curly braces {}_.
 * Variables declared in a method can only be accessed within the method.
-* Variables declared in a class can be accessed within the class. `public` class variables can be accessed by other classes.
+* Variables declared in a class can be accessed within the class.
+  * `public` class variables can be accessed by other classes.
+  * `static` vs. non-`static` has different semantics (future class).
 
 ## Arrays
 Arrays represent fixed-size sequences of values. You can create arrays of any type, and they can be multidimensional:
@@ -192,14 +192,14 @@ int[][] coordinates; // 2d int array
 
 Since arrays are fixed-size, you have to declare its size when you assign its initial value:
 ```java
-String[] months = new String[12]; // the months sequence has 12 slots, each of which is a String (or null)
-char[] mit = new char[] {'I', 'H', 'T', 'F', 'P'}; // the mit sequence has 5 slots, each of which is a char
+String[] months = new String[12];                  // months has 12 slots
+char[] mit = new char[] {'I', 'H', 'T', 'F', 'P'}; // mit has 5 slots
 ```
 
 You can obtain and assign values at specific indices in an array:
 ```java
 char middleChar = mit[2]; // 'T'
-mit[3] = 'P'; // mit is now IHTPP
+mit[3] = 'P';             // mit is now IHTPP
 ```
 
 In a future lecture, we will explore additional types in Java which can represent dynamically-sized sequences.
