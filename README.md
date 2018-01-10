@@ -4,7 +4,7 @@
 * Syllabus and class schedule have been posted to [Stellar](http://stellar.mit.edu/S/course/6/ia18/6.178/).
 * Concerns? Anonymous feedback: http://bit.ly/6178feedback
 * Problem Set 1 out tonight.
-* __ASAP__: Install your [MIT Certificate](https://ca.mit.edu/ca/)
+* __ASAP__: Install your [MIT Certificate](https://ca.mit.edu/ca/) (if you haven't)
 
 ### Last Time
 * Set up tools, import into Eclipse, simple Java, basic Git usage
