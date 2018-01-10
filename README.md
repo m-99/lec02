@@ -5,12 +5,16 @@
 * Concerns? Anonymous feedback: http://bit.ly/6178feedback
 * Problem Set 1 out tonight.
 
+### Last Time
+* Set up tools, import into Eclipse, simple Java, basic Git usage
+* Review [Git commit and push](https://github.mit.edu/6178-2018/lec1#git-commit-and-push)
+
 ### Clone this Repo
 * Open Terminal or Git Bash.
 * Go into your 6.178 directory: for example, `cd ~/Documents/6.178`
 * Run: `git clone git@github.mit.edu:6178-2018/lec2.git`
-  * If that didn't work, try `git clone https://github.mit.edu/6178-2017/lec2.git`.
-  * You should not need to put in your username or password if you [setup your SSH keys correctly](https://github.mit.edu/6178-2018/lec1#github).
+  * Issues? [Review SSH key setup](https://github.mit.edu/6178-2018/lec1#github).
+  * Alternatives: `git clone https://github.mit.edu/6178-2017/lec2.git`, or use [personal access tokens](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
 
 Unlike Lecture 1, you will not need to create or push to your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check. You will also use this tool in 6.031.
 
