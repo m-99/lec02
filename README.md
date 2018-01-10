@@ -140,6 +140,7 @@ A major, practical difference between primitives and objects is that objects (de
 String myName = "Richard";
 int charactersInName = myName.length(); // 7
 char thirdCharacterInName = myName.charAt(2); // 'c'
+int indexOfH = myName.indexOf('h'); // 3
 ```
 
 #### Comparisons: `==` vs `.equals()`
@@ -195,10 +196,12 @@ String[] months; // 1d String array
 int[][] coordinates; // 2d int array
 ```
 
-Since arrays are fixed-size, you have to declare its size when you assign its initial value:
+Since arrays are fixed-size, you have to declare its size when you assign its initial value. The size can be obtained by `.length`.
 ```java
-String[] months = new String[12];                  // months has 12 slots
-char[] mit = new char[] {'I', 'H', 'T', 'F', 'P'}; // mit has 5 slots
+String[] months = new String[12];
+char[] mit = new char[] {'I', 'H', 'T', 'F', 'P'};
+int numberOfMonths = months.length; // 12
+int mitLength = mit.length;         // 5
 ```
 
 You can obtain and assign values at specific indices in an array:
