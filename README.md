@@ -1,36 +1,40 @@
-# 6.178 Lecture #2 - Variables, Methods, Strings, Enums, and Arrays
+# 6.178 Lecture 2
+:fire: :fire: Variables, Methods, Strings, Enums, and Arrays :fire: :fire:
 
-## Announcements
-* Syllabus and class schedule have been posted to [Stellar](http://stellar.mit.edu/S/course/6/ia18/6.178/).
-* Concerns? Anonymous feedback: http://bit.ly/6178feedback
-* Problem Set 1 out tonight.
-* __ASAP__: Install your [MIT Certificate](https://ca.mit.edu/ca/) (if you haven't)
+### Announcements
+* Join the [Piazza](https://piazza.com/class/jqj7wr4d25v501) (if you haven't already)
+* Reminder: OH are `TH 11am - 4pm` in 34-303
+
+### To Clone this Repo
+* Open Terminal or Git Bash.
+* Go to the directory where you keep 6.178 stuff (this is where the repository will go)
+* Run: `git clone [my repo w/ SSH]`
+  * If that doesn't work, try: `git clone [my repo w/ HTTPS]`
+* After you have successfully cloned this repo, import lec02 into Eclipse ([instructions](#how-to-import-a-repository-into-eclipse))
 
 ### Last Time
-* Set up tools, import into Eclipse, simple Java, basic Git usage
-* [Solutions](https://github.mit.edu/6178-2018/lec1-solutions/blob/master/lec1-starting-code/src/lec1/Main.java) are posted
-* Review [Git commit and push](https://github.mit.edu/6178-2018/lec1#git-commit-and-push)
+* Set up Java + Eclipse
+* Set up Git
+* Java basics
+* [Link](https://github.com/jchoi5me/lec01) to Lecture 1 ([alternate link](https://github.mit.edu/6178-2019/lec01))
 
-### Clone this Repo
-* Open Terminal or Git Bash.
-* Go into your 6.178 directory: for example, `cd ~/Documents/6.178`
-* Run: `git clone git@github.mit.edu:6178-2018/lec2.git`
-  * Issues? [Review SSH key setup](https://github.mit.edu/6178-2018/lec1#github).
-  * Alternatives: `git clone https://github.mit.edu/6178-2017/lec2.git`, or use [personal access tokens](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
-* Import lec2 [into Eclipse](https://github.mit.edu/6178-2018/lec1#importing-this-repo-to-eclipse)
+### Today
+* [Java Methods](#java-methods)
+* [Writing specifications (code documentation)](#writing-specifications)
+* [More about variables](#more-about-variables)
+  * [Primitive Types](#primitive-types)
+  * [Object Types](#object-types)
+    * [Operations on Objects](#operations-on-objects)
+    * [Comparisons: `==` vs `.equals()`](#comparisons--vs-equals)
+    * [null](#null)
+  * [`final` Keyword](#final)
+  * [`static` Keyword](#static)
+    * [Variable Scope](#variable-scope)
+* [Arrays](#arrays)
+* [Enums](#enums)
 
-Unlike Lecture 1, you will not need to create or push to your own repo for lecture exercises from now on. Instead, we will install a new tool for Eclipse which allows you to *pair program* in class, and will automatically record your work online for the staff to check. You will also use this tool in 6.031.
-
-### Install Constellation
-* Go to [https://constellation.csail.mit.edu/](https://constellation.csail.mit.edu/)
-* Click "Install the Constellation plug-in". Open up Eclipse and follow the instructions.
-* Once Eclipse has restarted, you should see a "Collaborate" button along the bottom.
-* Click "Collaborate", select "lec2", and click "OK".
-* In the browser: if you wish to collaborate with someone, type in their joincode. If you wish to work by yourself, type in your own joincode.
-* To verify your connection: type something in `Main.java`, and check that your work appears here: https://constellation.csail.mit.edu/edit/src/lec2/Main.java
-
-## Methods
-Methods are similar to functions in Python. They are attached to classes. For example.
+## Java Methods
+Methods are similar to functions in Python. They are attached to classes (which is why we call them methods and not functions). For example, here is a method named `fahreneitToCelsius`:
 ```java
 public class UnitConverter {
 
@@ -63,7 +67,7 @@ For the above example method:
 * __method body__ - code between the curly braces
   * This code will be executed if the method is called.
 
-To call this method from within the same class, just write the method name and provide the parameters necessary. Here we're storing the result in a `double` named `temperatureCelsius`:
+To call this method from within the same class, just write the method name and provide the parameters necessary. Here we're storing the result of calling `fahrenheitToCelsius` with the parameter `temperatureFahrenheit` set to `32.0` in a `double` named `temperatureCelsius`:
 ```java
 double temperatureCelsius = fahrenheitToCelsius(32.0); // 0.0
 ```
@@ -92,8 +96,8 @@ Complete __TODO #1__ in `Main.java`.
 * Create a method called `estimateRidePrice` in the same class, and allow it to take all the parameters necessary to calculate the estimated price for a ride from either Uber or Lyft.
 * Modify the code in `main` to call that method instead of performing the calculations.
 
-## Specifications
-A method's __specification (or spec)__ is a set of comments attached to the method that tells the user of the program everything they need to know about the method. Specs are important for software engineers because they allow us to understand and use other people's programs _without reading the actual code_.
+## Writing Specifications
+A method's __specification (or specs)__ is a set of comments attached to the method that tells the user of the program everything they need to know about the method. Specs are important for software engineers because they allow us to understand and use other people's programs _without reading the actual code_.
 
 The job of a specification is to describe the output of the method given the inputs. If the inputs satisfy the requirements outlined in the spec, then the method will produce an output that satisfies the requirements outlined in the spec.
 
@@ -113,8 +117,8 @@ The first line of the spec details what the method does in plain English. Each p
 ### Exercise: Write a spec
 Write a spec, formatted as above, for your `estimateRidePrice` method.
 
-## More on Variables
-Recall from [Lecture 1](https://github.mit.edu/6178-2018/lec1#types) that variables in Java are _statically typed_, meaning the declaration must include the type of the variable.
+## More about Variables
+Recall from [Lecture 1](https://github.com/jchoi5me/lec01#types) ([alternate link](https://github.mit.edu/6178-2019/lec01)) that variables in Java are _statically typed_, meaning the declaration must include the type of the variable.
 ```java
 int myAge = 23;
 ```
@@ -131,7 +135,7 @@ You can think of primitive types as having __direct representation__ in the comp
 
 ### Object Types
 Java also has more complex types called _objects_. These types are typically uppercased. Any type which is not a primitive is an object. The simplest examples:
-* [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) (sequences of characters, like "Hello there")
+* [Strings](https://docs.oracle.com/javase/10/docs/api/java/lang/String.html) (sequences of characters, like "Hello there")
 * [Arrays](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html) (sequences of values of any type; more in a bit)
 * [Enums](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) (a finite set of named values; more in a bit)
 
@@ -152,7 +156,7 @@ Sometimes we want to check whether two variables have the same value. For primit
 int a, b;
 boolean aEqualsB = a == b;
 String c, d;
-boolean cEqualsD = a.equals(d);
+boolean cEqualsD = c.equals(d);
 ```
 
 #### `null`
@@ -185,11 +189,12 @@ public class Main {
 
 The `counter` variable is visible to any method within the `Main` class. The `private` modifier means it cannot be accessed by other classes. Removing the `static` modifier would make it an _instance_ variable, which we will discuss in a future class.
 
-#### Scope
+#### Variable Scope
 Generally, variables can be accessed anywhere within the _closest enclosing set of curly braces {}_.
 * Variables declared in a method can only be accessed within the method.
 * Variables declared in a class can be accessed within the class.
-  * `public` class variables can be accessed by other classes.
+  * `public` class variables _can_ be accessed by other classes.
+  * `private` class variables _cannot_ be accessed by other classes.
   * `static` vs. non-`static` has different semantics (future class).
 
 ## Arrays
@@ -242,10 +247,17 @@ Direction direction = Direction.NORTH;
 ```
 
 ### Exercise: Create an Enum
-Create an enum called `Day`, whose values are the days of the week. In Eclipse, select _File -> New -> Enum_. Make sure the package says `lec2`.
+Create an enum called `Day`, whose values are the days of the week. In Eclipse, select _File > New > Enum_. Make sure the package says `lec02`.
 
-### Switch Statements with Enums
-Recall [switch statements](https://github.mit.edu/6178-2018/lec1#switch-statements). These are most useful when dealing with Enums.
+### Conditional Statements with Enums
+Enums are useful for conditional statements. We can execute different instructions in our programs depending on the value of an enum.
+
+#### If-Else with Enums
+Recall from [Lecture 1](https://github.com/jchoi5me/lec01#if-else) the syntax for writing conditional statements.
+
+#### What are switch statements?
+TODO: write intro to switch statements
+
 ```java
 Direction direction;
 switch (direction) {
@@ -266,3 +278,19 @@ switch (direction) {
     break;
 }
 ```
+
+## Helpful Instructions
+
+### How to import a repository into Eclipse
+Go to _File > Import_.
+
+<img src="./screenshots/eclipse_import_1.png" width="75%" style="margin-right: auto; margin-left: auto; display: block;">
+
+Select _Existing Projects into Workspace_ under _General_. Then select Next.
+<img src="./screenshots/eclipse_import_2.png" width="75%" style="margin-right: auto; margin-left: auto; display: block;">
+
+Click on Browse and find the folder of the GitHub repo. The folder should be wherever you cloned the repo. Make sure `lec1-starting-code` is checkmarked and click Finish.
+<img src="./screenshots/eclipse_import_3.png" width="75%" style="margin-right: auto; margin-left: auto; display: block;">
+
+This is what Eclipse should look like for you after you successfully import the repo. The left panel is your __Package Explorer__. Here you can find all your packages (how Java organizes each program). Each package represents a different program in your workspace. The right panel is your __Outline__. The Outline tells you what methods, variables, etc. are in each file; you can quickly jump to them when you click on them. The bottom panel will be helpful for debugging as it has the __Console__. The center area is where you will be viewing files.
+<img src="./screenshots/eclipse_import_4.png" width="75%" style="margin-right: auto; margin-left: auto; display: block;">

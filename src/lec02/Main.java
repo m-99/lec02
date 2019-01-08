@@ -1,4 +1,4 @@
-package lec2;
+package lec02;
 
 public class Main {
 
