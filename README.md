@@ -8,7 +8,7 @@
 ### To Clone this Repo
 * Open Terminal or Git Bash.
 * Go to the directory where you keep 6.178 stuff (this is where the repository will go)
-* Run: `git clone https://github.mit.edu/6178-2019/lec02.git`
+* Run: `git clone git@github.mit.edu:6178-2019/lec02.git`
   * If that doesn't work, try: `git clone https://github.mit.edu/6178-2019/lec02.git`
 * After you have successfully cloned this repo, import `lec02` into Eclipse ([instructions](#how-to-import-a-repository-into-eclipse))
 
@@ -308,7 +308,7 @@ switch (direction) {
 A breakdown of the example:
 * We begin switch statements with the keyword `switch`, followed by the value that we are testing. Here, we are testing `direction`.
 * Depending on the value of `direction`, the switch statement will go to the `case` labeled with the matching value (either `NORTH`, `SOUTH`, `EAST`, or `WEST`). If `direction` does not have any one of these values, the code under the `default` case will be executed.
-* Each section of the switch statement ends with a `break` to indicate that the code that follows is not a part of the current section. The `break` keyword will stop the execution of any more code within the switch statement.
+* Each section of the switch statement ends with a `break` to indicate that the code that follows is not a part of the current section. The `break` keyword will stop the execution of any more code within the switch statement.`
 
 ## Feedback
 Please share your thoughts about this lecture [here](https://docs.google.com/forms/d/e/1FAIpQLScKqq94E372_IY0CvYOOBdwsgBT0fzB0u0BC0E5h8-1I7M20g/viewform?usp=sf_link). It's completely anonymous and will help us improve future lectures and gauge your understanding of the content.
