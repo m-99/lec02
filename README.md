@@ -8,8 +8,8 @@
 ### To Clone this Repo
 * Open Terminal or Git Bash.
 * Go to the directory where you keep 6.178 stuff (this is where the repository will go)
-* Run: `git clone [my repo w/ SSH]`
-  * If that doesn't work, try: `git clone [my repo w/ HTTPS]`
+* Run: `git clone https://github.mit.edu/6178-2019/lec02.git`
+  * If that doesn't work, try: `git clone https://github.mit.edu/6178-2019/lec02.git`
 * After you have successfully cloned this repo, import lec02 into Eclipse ([instructions](#how-to-import-a-repository-into-eclipse))
 
 ### Last Time
